@@ -19,3 +19,10 @@ form {
   align-items: center;
   gap: 10px;
 }
+
+.btn-align {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}

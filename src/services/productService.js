@@ -27,6 +27,7 @@ const createProduct = async newProduct => {
 
 const updateProduct = async (id, updatedProduct) => {
     const res = await fetch(`${BASE_URL}/${id}`, {
+        method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams, Link } from "react-router";
 import { showProduct, deleteProduct } from "../../services/productService";
 
 function ProductDetails() {
@@ -35,8 +35,11 @@ function ProductDetails() {
             <p>Price: {product.price}</p>
             <p>Quantity Left: {product.quantity}</p>
 
-            <div>
+            <div className="btn-align">
                 <button onClick={handleDelete}>Delete {product.title}</button>
+                <Link to={`/products/${product._id}/edit`}>
+                    <button>Update {product.title}</button>
+                </Link>
             </div>
         </>
     )
