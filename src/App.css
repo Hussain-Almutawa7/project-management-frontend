@@ -200,3 +200,10 @@ nav {
 nav Link {
   background-color: blueviolet
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}

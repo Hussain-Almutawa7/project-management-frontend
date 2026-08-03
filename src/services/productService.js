@@ -1,6 +1,6 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`;
 
-const index = () => {
+const index = async () => {
     const res = await fetch(BASE_URL);
     const data = await res.json();
     return data;
@@ -25,12 +25,12 @@ const createProduct = async newProduct => {
     return data;
 }
 
-const updateProduct = async updatedStudent => {
+const updateProduct = async (id, updatedProduct) => {
     const res = await fetch(BASE_URL, {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(updateProduct),
+        body: JSON.stringify(updatedProduct),
     });
 
     const data = await res.json()
@@ -46,7 +46,7 @@ const deleteProduct = async id => {
     return data;
 }
 
-module.exports = {
+export {
     index,
     showProduct,
     createProduct,
