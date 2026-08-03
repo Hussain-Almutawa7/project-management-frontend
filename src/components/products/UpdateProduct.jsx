@@ -15,6 +15,7 @@ function UpdateProduct() {
 
     const { productId } = useParams();
     const [formData, setFormData] = useState(initalState);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const getProductDetails = async () => {
@@ -23,11 +24,15 @@ function UpdateProduct() {
                 setFormData(productDetails);
             } catch (e) {
                 console.log("Error:", e.message);
+            } finally {
+                setIsLoading(false);
             }
         }
 
         getProductDetails();
     }, []);
+
+    if (isLoading) return <p>Loading Product...</p>
 
     function handleChange(e) {
         setFormData({ ...formData, [e.target.name]: e.target.value });

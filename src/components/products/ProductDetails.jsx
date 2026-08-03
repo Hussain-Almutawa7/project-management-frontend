@@ -8,6 +8,8 @@ function ProductDetails() {
 
     const { productId } = useParams();
     const [product, setProduct] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+    // Maybe I will add error state later
 
     useEffect(() => {
         const fetchProductDetails = async () => {
@@ -16,11 +18,18 @@ function ProductDetails() {
                 setProduct(product);
             } catch (e) {
                 console.log("Error: ", e.message);
+            } finally {
+                setIsLoading(false)
             }
         }
 
         fetchProductDetails();
     }, []);
+
+    if (isLoading) return <p>Loading Product ...</p>
+
+    if (!product) return <p>Product Not Found.</p>
+
 
     const handleDelete = async () => {
         await deleteProduct(productId);

@@ -5,6 +5,7 @@ import { Link } from "react-router";
 function ProductList() {
 
     const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchAllProducts = async () => {
@@ -13,11 +14,17 @@ function ProductList() {
                 setProducts(products);
             } catch (e) {
                 console.log("Error: ", e.message)
+            } finally {
+                setIsLoading(false);
             }
         }
 
         fetchAllProducts();
     }, []);
+
+    if (isLoading) return <p>Loading Products ...</p>
+
+    if (!products) return <p>No Products found. Try creating one and comeback!</p>
 
     return (
         <>
