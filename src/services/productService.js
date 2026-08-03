@@ -26,7 +26,7 @@ const createProduct = async newProduct => {
 }
 
 const updateProduct = async (id, updatedProduct) => {
-    const res = await fetch(BASE_URL, {
+    const res = await fetch(`${BASE_URL}/${id}`, {
         headers: {
             "Content-Type": "application/json"
         },
@@ -38,7 +38,7 @@ const updateProduct = async (id, updatedProduct) => {
 }
 
 const deleteProduct = async id => {
-    const res = await fetch(BASE_URL, {
+    const res = await fetch(`${BASE_URL}/${id}`, {
         method: "DELETE"
     });
 
